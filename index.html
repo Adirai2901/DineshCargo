@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dinesh Cargo – Logistics & Transport Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111318;
+      --card: #16191f;
+      --border: #222630;
+      --orange: #f97316;
+      --orange-dark: #c2570e;
+      --orange-glow: rgba(249,115,22,0.18);
+      --white: #f5f5f0;
+      --muted: #8a8f9a;
+      --light: #c8ccd6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 70px;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      animation: fadeDown 0.7s ease both;
+    }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--orange);
+      clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 20px; height: 20px; fill: #fff; }
+    .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--white); }
+    .nav-logo-text span { color: var(--orange); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--light); text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--orange);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--orange); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 9px 22px; border: none; cursor: pointer;
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--orange-dark); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 0 5vw; padding-top: 70px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg, rgba(249,115,22,0.07) 0%, transparent 50%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.012) 40px,
+          rgba(255,255,255,0.012) 41px
+        );
+    }
+    .hero-bg-lines {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .hero-bg-lines span {
+      position: absolute; bottom: 0; width: 2px;
+      background: linear-gradient(to top, var(--orange), transparent);
+      animation: riseLine 3s ease-in-out infinite;
+      opacity: 0.35;
+    }
+    .hero-bg-lines span:nth-child(1) { left: 15%; height: 35%; animation-delay: 0s; }
+    .hero-bg-lines span:nth-child(2) { left: 30%; height: 55%; animation-delay: 0.6s; }
+    .hero-bg-lines span:nth-child(3) { left: 55%; height: 45%; animation-delay: 1.2s; }
+    .hero-bg-lines span:nth-child(4) { left: 72%; height: 30%; animation-delay: 0.3s; }
+    .hero-bg-lines span:nth-child(5) { left: 88%; height: 60%; animation-delay: 0.9s; }
+    @keyframes riseLine {
+      0%, 100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+      50% { opacity: 0.35; transform: scaleY(1); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--orange);
+      border: 1px solid var(--orange-glow); padding: 6px 14px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      line-height: 0.92; letter-spacing: 2px;
+      animation: fadeUp 0.7s 0.35s ease both;
+    }
+    .hero-h1 em { font-style: normal; color: var(--orange); }
+
+    .hero-sub {
+      margin-top: 24px; max-width: 520px;
+      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+      color: var(--light);
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .hero-btns {
+      margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.65s ease both;
+    }
+    .btn-primary {
+      background: var(--orange); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 14px 32px;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 13px 32px;
+      border: 1px solid var(--border); cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+    .hero-stats {
+      margin-top: 60px; display: flex; gap: 40px; flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.8s ease both;
+    }
+    .stat { display: flex; flex-direction: column; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem; color: var(--orange); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--muted); margin-top: 4px;
+    }
+
+    .hero-truck {
+      position: absolute; right: 0; bottom: 0;
+      width: 52%; pointer-events: none;
+      opacity: 0.07;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    /* ── MARQUEE STRIP ── */
+    .marquee-strip {
+      background: var(--orange); padding: 12px 0; overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 18s linear infinite;
+    }
+    .marquee-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; letter-spacing: 3px;
+      color: #fff; padding: 0 32px;
+      display: flex; align-items: center; gap: 32px;
+    }
+    .marquee-item::after { content: '◆'; font-size: 0.55rem; opacity: 0.7; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 100px 5vw; }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-tag::before { content: ''; width: 28px; height: 2px; background: var(--orange); }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 1.5px; line-height: 1;
+    }
+    .section-title em { font-style: normal; color: var(--orange); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--dark); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 60px;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-wrap {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .about-img-wrap svg { width: 100%; height: 100%; opacity: 0.4; }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      width: 110px; height: 110px;
+      background: var(--orange);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .about-badge-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem; line-height: 1; color: #fff;
+    }
+    .about-badge-text {
+      font-size: 0.6rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; color: #fff; text-align: center;
+    }
+    .about-text p {
+      font-size: 1.02rem; font-weight: 300; line-height: 1.85;
+      color: var(--light); margin-top: 20px;
+    }
+    .about-list { margin-top: 28px; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .about-list li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.92rem; color: var(--light); font-weight: 500;
+    }
+    .about-list li::before {
+      content: ''; flex-shrink: 0;
+      width: 18px; height: 18px; background: var(--orange-glow);
+      border: 1px solid var(--orange);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--black); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 20px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 42px 32px; position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--orange-glow), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .service-card:hover { border-color: var(--orange); transform: translateY(-4px); }
+    .service-card:hover::before { opacity: 1; }
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem; color: var(--border); line-height: 1;
+      position: absolute; top: 16px; right: 20px;
+      transition: color 0.3s;
+    }
+    .service-card:hover .service-num { color: rgba(249,115,22,0.15); }
+    .service-icon {
+      width: 52px; height: 52px; background: var(--orange-glow);
+      border: 1px solid var(--orange); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 24px;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--orange); fill: none; stroke-width: 1.8; }
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 0.88rem; font-weight: 300; line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--dark); }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; margin-top: 60px;
+    }
+    .why-features { display: flex; flex-direction: column; gap: 28px; }
+    .why-feat {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.25s;
+    }
+    .why-feat:hover { border-color: var(--orange); }
+    .why-feat-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--orange); display: flex; align-items: center; justify-content: center;
+    }
+    .why-feat-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
+    .why-feat-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    .why-feat-desc { font-size: 0.87rem; color: var(--muted); font-weight: 300; line-height: 1.65; }
+    .why-big {
+      background: var(--orange); padding: 48px 40px;
+      display: flex; flex-direction: column; justify-content: center;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+    }
+    .why-big-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; color: #fff; line-height: 1; margin-bottom: 20px;
+    }
+    .why-big-body {
+      font-size: 0.97rem; font-weight: 300; color: rgba(255,255,255,0.85);
+      line-height: 1.75; margin-bottom: 32px;
+    }
+    .why-num-row { display: flex; gap: 32px; }
+    .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: #fff; line-height: 1; }
+    .why-num-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7); }
+
+    /* ── COVERAGE / MAP SECTION ── */
+    #coverage { background: var(--black); }
+    .coverage-inner { margin-top: 60px; }
+    .coverage-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 40px;
+      border: 1px solid var(--border); padding: 40px 48px;
+      background: var(--card);
+    }
+    .coverage-stat { text-align: center; }
+    .coverage-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; color: var(--orange); line-height: 1;
+    }
+    .coverage-stat-label {
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted);
+    }
+    .coverage-divider { width: 1px; height: 60px; background: var(--border); }
+    .coverage-map-wrap {
+      margin-top: 40px;
+      border: 1px solid var(--border); padding: 40px;
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 280px; position: relative; overflow: hidden;
+    }
+    .coverage-map-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 14px; color: var(--muted); text-align: center;
+    }
+    .coverage-map-placeholder svg { width: 64px; height: 64px; stroke: var(--orange); fill: none; opacity: 0.5; }
+    .coverage-map-placeholder p { font-size: 0.9rem; }
+    .coverage-map-placeholder strong { color: var(--white); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--dark); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 60px; margin-top: 60px; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; }
+    .contact-info-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 22px; border: 1px solid var(--border); background: var(--card);
+    }
+    .contact-info-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--orange-glow); border: 1px solid var(--orange);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-info-icon svg { width: 20px; height: 20px; stroke: var(--orange); fill: none; stroke-width: 2; }
+    .contact-info-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px;
+    }
+    .contact-info-val { font-size: 0.97rem; color: var(--white); font-weight: 500; }
+    .contact-form-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 48px 42px;
+    }
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 28px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 1.8px; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--dark); border: 1px solid var(--border);
+      color: var(--white); font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem; padding: 12px 16px;
+      outline: none; transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--orange); }
+    .form-select option { background: var(--dark); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%; background: var(--orange); color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1rem; letter-spacing: 2px;
+      text-transform: uppercase; padding: 16px;
+      border: none; cursor: pointer; margin-top: 8px;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .form-success {
+      display: none; text-align: center; padding: 28px;
+      color: var(--orange); font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem; font-weight: 700; letter-spacing: 1px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070709; border-top: 1px solid var(--border);
+      padding: 60px 5vw 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 0.9rem; font-weight: 300; color: var(--muted);
+      line-height: 1.7; margin-top: 16px; max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .footer-bottom span { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-truck { display: none; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .coverage-bar { flex-direction: column; text-align: center; }
+      .coverage-divider { width: 60px; height: 1px; }
+      .contact-form-wrap { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════ NAV ══════════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 3h15v11H1zM16 8h4l3 3v3h-7V8z"/>
+        <circle cx="5.5" cy="17.5" r="2.5"/>
+        <circle cx="18.5" cy="17.5" r="2.5"/>
+      </svg>
+    </div>
+    <span class="nav-logo-text">DINESH <span>CARGO</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#coverage">Coverage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get a Quote</a>
+</nav>
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-lines">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">India's Trusted Cargo Network</div>
+    <h1 class="hero-h1">MOVE<br/>FASTER.<br/><em>DELIVER</em><br/>SMARTER.</h1>
+    <p class="hero-sub">Dinesh Cargo connects businesses across India with reliable freight, road transport, and end-to-end logistics solutions — on time, every time.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">Request a Quote</a>
+      <a class="btn-ghost" href="#services">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Happy Clients</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">28</span>
+        <span class="stat-label">States Covered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">99%</span>
+        <span class="stat-label">On-Time Delivery</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ MARQUEE ══════════════════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <!-- duplicated for seamless loop -->
+    <div class="marquee-item">Road Transport</div>
+    <div class="marquee-item">Air Cargo</div>
+    <div class="marquee-item">Warehousing</div>
+    <div class="marquee-item">Express Delivery</div>
+    <div class="marquee-item">Supply Chain</div>
+    <div class="marquee-item">Freight Forwarding</div>
+    <div class="marquee-item">Pan-India Coverage</div>
+    <div class="marquee-item">Road Transport</div>
+    <div class="marquee-item">Air Cargo</div>
+    <div class="marquee-item">Warehousing</div>
+    <div class="marquee-item">Express Delivery</div>
+    <div class="marquee-item">Supply Chain</div>
+    <div class="marquee-item">Freight Forwarding</div>
+    <div class="marquee-item">Pan-India Coverage</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ ABOUT ══════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-img-wrap">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="180" width="340" height="140" rx="4" fill="#f97316" opacity="0.6"/>
+          <rect x="400" y="220" width="120" height="100" rx="4" fill="#f97316" opacity="0.4"/>
+          <circle cx="150" cy="335" r="30" fill="#222" stroke="#f97316" stroke-width="6"/>
+          <circle cx="150" cy="335" r="12" fill="#f97316"/>
+          <circle cx="430" cy="335" r="30" fill="#222" stroke="#f97316" stroke-width="6"/>
+          <circle cx="430" cy="335" r="12" fill="#f97316"/>
+          <rect x="80" y="100" width="80" height="80" rx="2" fill="#f97316" opacity="0.2" stroke="#f97316" stroke-width="1"/>
+          <rect x="180" y="120" width="60" height="60" rx="2" fill="#f97316" opacity="0.1" stroke="#f97316" stroke-width="1"/>
+          <rect x="260" y="90" width="100" height="90" rx="2" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1"/>
+          <line x1="0" y1="320" x2="600" y2="320" stroke="#f97316" stroke-width="1" stroke-dasharray="8 6" opacity="0.3"/>
+        </svg>
+        <div class="about-badge">
+          <span class="about-badge-num">12+</span>
+          <span class="about-badge-text">Years in Business</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">Who We Are</div>
+      <h2 class="section-title">BUILT ON <em>TRUST,</em> DRIVEN BY SPEED</h2>
+      <p>Dinesh Cargo is a premier logistics and transport company with over a decade of experience moving goods safely and efficiently across India. From small parcels to full truckloads — we handle it all.</p>
+      <p>We combine local expertise with a wide pan-India network to offer seamless, cost-effective cargo solutions for businesses of all sizes.</p>
+      <ul class="about-list">
+        <li>Pan-India road and freight network</li>
+        <li>Real-time shipment tracking</li>
+        <li>Dedicated customer support</li>
+        <li>Competitive and transparent pricing</li>
+        <li>Licensed, insured & fully compliant</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SERVICES ══════════════════════════ -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">OUR <em>SERVICES</em></h2>
+    </div>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="service-name">Road Transport</div>
+      <p class="service-desc">Full truckload (FTL) and part truckload (PTL) services across all major highways. Door-to-door delivery with GPS-tracked vehicles.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>
+      </div>
+      <div class="service-name">Express Cargo</div>
+      <p class="service-desc">Time-critical shipments delivered with priority handling. Same-day and next-day express options for urgent consignments.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="service-name">Warehousing</div>
+      <p class="service-desc">Secure, managed warehouse facilities for short and long-term storage needs. Inventory management and pick-and-pack solutions.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="service-name">Supply Chain Management</div>
+      <p class="service-desc">End-to-end supply chain consulting and execution. We optimise your logistics from procurement to last-mile delivery.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="service-name">Last-Mile Delivery</div>
+      <p class="service-desc">Efficient delivery to residential and commercial addresses. Proof of delivery, real-time updates, and flexible delivery windows.</p>
+    </div>
+
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="service-name">Shipment Tracking</div>
+      <p class="service-desc">Live GPS tracking for all consignments. Customers get real-time visibility and automated status notifications via SMS and email.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ WHY US ══════════════════════════ -->
+<section id="why">
+  <div class="section-tag">Our Edge</div>
+  <h2 class="section-title">WHY CHOOSE <em>DINESH CARGO</em></h2>
+  <div class="why-grid">
+    <div class="why-features">
+      <div class="why-feat">
+        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <div class="why-feat-title">Safe & Insured Shipments</div>
+          <p class="why-feat-desc">Every consignment is insured and handled with care. We take full responsibility from pick-up to delivery.</p>
+        </div>
+      </div>
+      <div class="why-feat">
+        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div>
+          <div class="why-feat-title">On-Time, Every Time</div>
+          <p class="why-feat-desc">99% on-time delivery record maintained across thousands of shipments nationwide.</p>
+        </div>
+      </div>
+      <div class="why-feat">
+        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div>
+          <div class="why-feat-title">Dedicated Account Support</div>
+          <p class="why-feat-desc">A personal account manager for every client. We're available 24/7 to resolve any queries or concerns.</p>
+        </div>
+      </div>
+      <div class="why-feat">
+        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div>
+          <div class="why-feat-title">Transparent Pricing</div>
+          <p class="why-feat-desc">No hidden fees. Clear, upfront quotations with detailed breakdowns for every service.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-big">
+      <div class="why-big-title">DELIVERING INDIA'S TOMORROW, TODAY.</div>
+      <p class="why-big-body">With a growing fleet, modern infrastructure, and a passionate team, Dinesh Cargo is committed to being the most reliable logistics partner for Indian businesses. Whether you're shipping across the street or across the country — we're your people.</p>
+      <div class="why-num-row">
+        <div>
+          <div class="why-num">50+</div>
+          <div class="why-num-label">Fleet Vehicles</div>
+        </div>
+        <div>
+          <div class="why-num">28</div>
+          <div class="why-num-label">States Covered</div>
+        </div>
+        <div>
+          <div class="why-num">500+</div>
+          <div class="why-num-label">Clients Served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ COVERAGE ══════════════════════════ -->
+<section id="coverage">
+  <div class="section-tag">Our Reach</div>
+  <h2 class="section-title">PAN-INDIA <em>COVERAGE</em></h2>
+  <div class="coverage-inner">
+    <div class="coverage-bar">
+      <div class="coverage-stat">
+        <div class="coverage-stat-num">28+</div>
+        <div class="coverage-stat-label">States & UTs</div>
+      </div>
+      <div class="coverage-divider"></div>
+      <div class="coverage-stat">
+        <div class="coverage-stat-num">400+</div>
+        <div class="coverage-stat-label">Pin Codes Served</div>
+      </div>
+      <div class="coverage-divider"></div>
+      <div class="coverage-stat">
+        <div class="coverage-stat-num">50+</div>
+        <div class="coverage-stat-label">Major Cities</div>
+      </div>
+      <div class="coverage-divider"></div>
+      <div class="coverage-stat">
+        <div class="coverage-stat-num">24/7</div>
+        <div class="coverage-stat-label">Operations</div>
+      </div>
+    </div>
+    <div class="coverage-map-wrap">
+      <div class="coverage-map-placeholder">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/><path d="M3 20h18" stroke-dasharray="3 2"/></svg>
+        <p><strong>Service available across all major Indian cities</strong><br/>Tamil Nadu · Karnataka · Maharashtra · Delhi · Gujarat · Rajasthan · and more</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <h2 class="section-title">CONTACT <em>US</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0111.19 18a19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 3.18 2 2 0 014.11 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-val">+91 98765 43210</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-val">info@dineshcargo.in</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Head Office</div>
+          <div class="contact-info-val">Chennai, Tamil Nadu, India</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Working Hours</div>
+          <div class="contact-info-val">Mon–Sat: 8:00 AM – 8:00 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <div class="form-title">SEND US A MESSAGE</div>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="Full name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Required</label>
+          <select class="form-select">
+            <option value="">Select a service...</option>
+            <option>Road Transport (FTL/PTL)</option>
+            <option>Express Cargo</option>
+            <option>Warehousing & Storage</option>
+            <option>Supply Chain Management</option>
+            <option>Last-Mile Delivery</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Describe your requirement — origin, destination, cargo type, weight..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        ✓ Message Sent! We'll get back to you within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#hero" style="display:inline-flex;">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 3h15v11H1zM16 8h4l3 3v3h-7V8z"/>
+            <circle cx="5.5" cy="17.5" r="2.5"/>
+            <circle cx="18.5" cy="17.5" r="2.5"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">DINESH <span>CARGO</span></span>
+      </a>
+      <p>Reliable logistics and cargo transport solutions across India. Your goods, our responsibility.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Quick Links</div>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul>
+        <li><a href="#services">Road Transport</a></li>
+        <li><a href="#services">Express Cargo</a></li>
+        <li><a href="#services">Warehousing</a></li>
+        <li><a href="#services">Last-Mile Delivery</a></li>
+        <li><a href="#services">Supply Chain</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <ul>
+        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+        <li><a href="mailto:info@dineshcargo.in">info@dineshcargo.in</a></li>
+        <li><a href="#coverage">Chennai, Tamil Nadu</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>Dinesh Cargo</span>. All rights reserved.</p>
+    <p>Designed with ❤ for reliable logistics</p>
+  </div>
+</footer>
+
+<script>
+  // Form submit handler
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+
+  // Intersection observer for subtle fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .why-feat, .contact-info-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
