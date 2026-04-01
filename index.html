@@ -1,972 +1,999 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dinesh Cargo – Logistics & Transport Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <title>Dinesh Cargo Movers – Pan-India Logistics & Transport Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
     :root {
-      --black: #0a0a0a;
-      --dark: #111318;
-      --card: #16191f;
-      --border: #222630;
-      --orange: #f97316;
-      --orange-dark: #c2570e;
-      --orange-glow: rgba(249,115,22,0.18);
-      --white: #f5f5f0;
-      --muted: #8a8f9a;
-      --light: #c8ccd6;
+      --navy:   #1a2742;
+      --navy2:  #243352;
+      --blue:   #2c4a8c;
+      --accent: #c8202f;
+      --white:  #ffffff;
+      --off:    #f7f6f3;
+      --light:  #eef0f4;
+      --border: #d8dce6;
+      --text:   #2a2a2a;
+      --muted:  #666;
+      --subtle: #999;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior:smooth; }
 
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 400;
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:#f0f0f0; }
+    ::-webkit-scrollbar-thumb { background:var(--navy); }
 
-    /* ── NAV ── */
+    img { display:block; max-width:100%; }
+    a { text-decoration:none; color:inherit; }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--navy);
+      padding: 8px 5vw;
+      display: flex; justify-content:space-between; align-items:center;
+      font-size: 12px; color: rgba(255,255,255,0.65);
+    }
+    .topbar a { color:rgba(255,255,255,0.8); }
+    .topbar a:hover { color:#fff; }
+
+    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top:0; z-index:100;
+      background: var(--white);
+      border-bottom: 2px solid var(--navy);
+      display: flex; align-items:center; justify-content:space-between;
       padding: 0 5vw;
       height: 70px;
-      background: rgba(10,10,10,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      animation: fadeDown 0.7s ease both;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     }
-    @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    .nav-brand { display:flex; align-items:center; gap:12px; }
+    .nav-brand-icon {
+      width:42px; height:42px; background:var(--navy);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .nav-brand-icon svg { width:22px; height:22px; fill:#fff; }
+    .nav-brand-name { font-size:1.05rem; font-weight:700; color:var(--navy); letter-spacing:0.3px; }
+    .nav-brand-tagline { font-size:0.63rem; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
 
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px; text-decoration: none;
-    }
-    .nav-logo-icon {
-      width: 38px; height: 38px; background: var(--orange);
-      clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .nav-logo-icon svg { width: 20px; height: 20px; fill: #fff; }
-    .nav-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--white); }
-    .nav-logo-text span { color: var(--orange); }
-
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links { display:flex; gap:0; list-style:none; }
     .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: 0.85rem;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--light); text-decoration: none;
-      transition: color 0.2s;
-      position: relative;
+      display:block; padding:0 15px;
+      font-size:0.8rem; font-weight:700; letter-spacing:0.4px; text-transform:uppercase;
+      color:var(--text); line-height:70px;
+      border-bottom:3px solid transparent;
+      transition:color 0.2s, border-color 0.2s;
     }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
-      height: 2px; background: var(--orange);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-    .nav-links a:hover { color: var(--orange); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-
+    .nav-links a:hover { color:var(--navy); border-color:var(--navy); }
     .nav-cta {
-      background: var(--orange); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 0.82rem;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 9px 22px; border: none; cursor: pointer;
-      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-      transition: background 0.2s;
-      text-decoration: none;
+      background:var(--accent); color:#fff;
+      font-size:0.78rem; font-weight:700; letter-spacing:0.8px; text-transform:uppercase;
+      padding:10px 22px; border:none; cursor:pointer; transition:background 0.2s;
     }
-    .nav-cta:hover { background: var(--orange-dark); }
+    .nav-cta:hover { background:#a31825; }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding: 0 5vw; padding-top: 70px;
+      background: var(--navy); position:relative; overflow:hidden;
+      padding: 80px 5vw; display:flex; align-items:center; gap:60px;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(135deg, rgba(249,115,22,0.07) 0%, transparent 50%),
-        repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent 40px,
-          rgba(255,255,255,0.012) 40px,
-          rgba(255,255,255,0.012) 41px
-        );
+    .hero-bg-pattern {
+      position:absolute; inset:0; opacity:0.04;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,1) 39px, rgba(255,255,255,1) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,1) 39px, rgba(255,255,255,1) 40px);
     }
-    .hero-bg-lines {
-      position: absolute; inset: 0; overflow: hidden;
+    .hero-left { position:relative; z-index:2; flex:1; }
+    .hero-eyebrow {
+      font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+      color:rgba(255,255,255,0.45); margin-bottom:20px; display:inline-block;
     }
-    .hero-bg-lines span {
-      position: absolute; bottom: 0; width: 2px;
-      background: linear-gradient(to top, var(--orange), transparent);
-      animation: riseLine 3s ease-in-out infinite;
-      opacity: 0.35;
-    }
-    .hero-bg-lines span:nth-child(1) { left: 15%; height: 35%; animation-delay: 0s; }
-    .hero-bg-lines span:nth-child(2) { left: 30%; height: 55%; animation-delay: 0.6s; }
-    .hero-bg-lines span:nth-child(3) { left: 55%; height: 45%; animation-delay: 1.2s; }
-    .hero-bg-lines span:nth-child(4) { left: 72%; height: 30%; animation-delay: 0.3s; }
-    .hero-bg-lines span:nth-child(5) { left: 88%; height: 60%; animation-delay: 0.9s; }
-    @keyframes riseLine {
-      0%, 100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
-      50% { opacity: 0.35; transform: scaleY(1); }
-    }
-
-    .hero-content { position: relative; z-index: 2; max-width: 720px; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 2.5px;
-      text-transform: uppercase; color: var(--orange);
-      border: 1px solid var(--orange-glow); padding: 6px 14px;
-      margin-bottom: 28px;
-      animation: fadeUp 0.7s 0.2s ease both;
-    }
-    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
-
     .hero-h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 7.5rem);
-      line-height: 0.92; letter-spacing: 2px;
-      animation: fadeUp 0.7s 0.35s ease both;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color:#fff; line-height:1.2; letter-spacing:-0.3px; margin-bottom:20px;
     }
-    .hero-h1 em { font-style: normal; color: var(--orange); }
-
+    .hero-h1 em { font-style:italic; color:rgba(255,255,255,0.7); }
     .hero-sub {
-      margin-top: 24px; max-width: 520px;
-      font-size: 1.05rem; font-weight: 300; line-height: 1.7;
-      color: var(--light);
-      animation: fadeUp 0.7s 0.5s ease both;
+      font-size:0.95rem; font-weight:300; color:rgba(255,255,255,0.68);
+      max-width:480px; line-height:1.85; margin-bottom:36px;
+    }
+    .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-solid {
+      background:var(--accent); color:#fff;
+      font-size:0.82rem; font-weight:700; letter-spacing:0.8px; text-transform:uppercase;
+      padding:13px 28px; border:2px solid var(--accent);
+      cursor:pointer; transition:all 0.2s; display:inline-block;
+    }
+    .btn-solid:hover { background:#a31825; border-color:#a31825; }
+    .btn-outline {
+      background:transparent; color:#fff;
+      font-size:0.82rem; font-weight:700; letter-spacing:0.8px; text-transform:uppercase;
+      padding:13px 28px; border:2px solid rgba(255,255,255,0.35);
+      cursor:pointer; transition:all 0.2s; display:inline-block;
+    }
+    .btn-outline:hover { border-color:#fff; }
+    .hero-right {
+      position:relative; z-index:2; flex:0 0 320px;
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .hero-stat-box {
+      background:rgba(255,255,255,0.06); border-left:3px solid var(--accent);
+      padding:18px 24px;
+    }
+    .hero-stat-num {
+      font-family:Georgia, serif; font-size:2.3rem; font-weight:bold; color:#fff; line-height:1;
+    }
+    .hero-stat-label {
+      font-size:0.68rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+      color:rgba(255,255,255,0.45); margin-top:4px;
     }
 
-    .hero-btns {
-      margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.65s ease both;
+    /* SECTION COMMONS */
+    section { padding:80px 5vw; }
+    .sec-label {
+      font-size:0.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+      color:var(--accent); margin-bottom:10px;
+      display:flex; align-items:center; gap:10px;
     }
-    .btn-primary {
-      background: var(--orange); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: 14px 32px;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      border: none; cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+    .sec-label::after { content:''; width:36px; height:1px; background:var(--accent); }
+    .sec-title {
+      font-family:Georgia, 'Times New Roman', serif;
+      font-size:clamp(1.8rem, 3vw, 2.5rem);
+      color:var(--navy); line-height:1.2; margin-bottom:14px;
     }
-    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
-    .btn-ghost {
-      background: transparent; color: var(--white);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 0.9rem; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: 13px 32px;
-      border: 1px solid var(--border); cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
-
-    .hero-stats {
-      margin-top: 60px; display: flex; gap: 40px; flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.8s ease both;
-    }
-    .stat { display: flex; flex-direction: column; }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.6rem; color: var(--orange); line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.72rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--muted); margin-top: 4px;
+    .divider { width:44px; height:3px; background:var(--accent); margin:16px 0 44px; }
+    .sec-sub {
+      font-size:0.92rem; color:var(--muted); max-width:580px; line-height:1.85;
     }
 
-    .hero-truck {
-      position: absolute; right: 0; bottom: 0;
-      width: 52%; pointer-events: none;
-      opacity: 0.07;
-      animation: fadeUp 1s 0.4s ease both;
+    /* ABOUT */
+    #about { background:var(--off); }
+    .about-wrap { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+    .about-img-grid {
+      display:grid; grid-template-columns:1fr 1fr; grid-template-rows:240px 240px; gap:4px;
+    }
+    .about-img-cell { overflow:hidden; background:var(--light); }
+    .about-img-cell img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .about-img-cell:hover img { transform:scale(1.04); }
+    .about-img-cell.tall { grid-row:span 2; }
+    .about-text p { font-size:0.91rem; color:var(--muted); line-height:1.85; margin-bottom:14px; }
+    .about-checklist { list-style:none; margin-top:22px; display:flex; flex-direction:column; gap:9px; }
+    .about-checklist li {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:0.87rem; color:var(--text);
+    }
+    .about-checklist li::before {
+      content:''; flex-shrink:0; margin-top:7px;
+      width:7px; height:7px; background:var(--accent); border-radius:50%;
     }
 
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(30px); }
-      to { opacity:1; transform:translateY(0); }
+    /* STATS BAR */
+    .stats-bar {
+      background:var(--navy); padding:0 5vw;
+      display:grid; grid-template-columns:repeat(4,1fr);
+      border-top:4px solid var(--accent);
+    }
+    .sbar-item {
+      padding:36px 24px; text-align:center;
+      border-right:1px solid rgba(255,255,255,0.07);
+    }
+    .sbar-item:last-child { border-right:0; }
+    .sbar-num {
+      font-family:Georgia, serif; font-size:2.5rem; font-weight:bold; color:#fff; line-height:1;
+    }
+    .sbar-label {
+      font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:rgba(255,255,255,0.4); margin-top:6px;
     }
 
-    /* ── MARQUEE STRIP ── */
-    .marquee-strip {
-      background: var(--orange); padding: 12px 0; overflow: hidden;
-    }
-    .marquee-track {
-      display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 18s linear infinite;
-    }
-    .marquee-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem; letter-spacing: 3px;
-      color: #fff; padding: 0 32px;
-      display: flex; align-items: center; gap: 32px;
-    }
-    .marquee-item::after { content: '◆'; font-size: 0.55rem; opacity: 0.7; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── SECTION COMMONS ── */
-    section { padding: 100px 5vw; }
-    .section-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 12px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-tag::before { content: ''; width: 28px; height: 2px; background: var(--orange); }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      letter-spacing: 1.5px; line-height: 1;
-    }
-    .section-title em { font-style: normal; color: var(--orange); }
-
-    /* ── ABOUT ── */
-    #about { background: var(--dark); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center; margin-top: 60px;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-img-wrap {
-      width: 100%; aspect-ratio: 4/3;
-      background: var(--card);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; position: relative;
-    }
-    .about-img-wrap svg { width: 100%; height: 100%; opacity: 0.4; }
-    .about-badge {
-      position: absolute; bottom: -20px; right: -20px;
-      width: 110px; height: 110px;
-      background: var(--orange);
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .about-badge-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem; line-height: 1; color: #fff;
-    }
-    .about-badge-text {
-      font-size: 0.6rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1px; color: #fff; text-align: center;
-    }
-    .about-text p {
-      font-size: 1.02rem; font-weight: 300; line-height: 1.85;
-      color: var(--light); margin-top: 20px;
-    }
-    .about-list { margin-top: 28px; list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .about-list li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 0.92rem; color: var(--light); font-weight: 500;
-    }
-    .about-list li::before {
-      content: ''; flex-shrink: 0;
-      width: 18px; height: 18px; background: var(--orange-glow);
-      border: 1px solid var(--orange);
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    }
-
-    /* ── SERVICES ── */
-    #services { background: var(--black); }
-    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 20px; }
+    /* SERVICES */
+    #services { background:var(--white); }
     .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      display:grid; grid-template-columns:repeat(3,1fr);
+      border:1px solid var(--border);
     }
-    .service-card {
-      background: var(--card); border: 1px solid var(--border);
-      padding: 42px 32px; position: relative; overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-      cursor: default;
+    .svc-card {
+      padding:34px 28px; border-right:1px solid var(--border);
+      border-bottom:1px solid var(--border); position:relative;
+      transition:background 0.2s;
     }
-    .service-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--orange-glow), transparent);
-      opacity: 0; transition: opacity 0.3s;
+    .svc-card:hover { background:var(--off); }
+    .svc-card:nth-child(3n) { border-right:0; }
+    .svc-num {
+      font-family:Georgia, serif; font-size:2.6rem; color:var(--border); font-weight:bold;
+      position:absolute; top:14px; right:18px; line-height:1; transition:color 0.2s;
     }
-    .service-card:hover { border-color: var(--orange); transform: translateY(-4px); }
-    .service-card:hover::before { opacity: 1; }
-    .service-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 4rem; color: var(--border); line-height: 1;
-      position: absolute; top: 16px; right: 20px;
-      transition: color 0.3s;
+    .svc-card:hover .svc-num { color:rgba(26,39,66,0.1); }
+    .svc-icon {
+      width:44px; height:44px; background:var(--light); border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+      transition:background 0.2s, border-color 0.2s;
     }
-    .service-card:hover .service-num { color: rgba(249,115,22,0.15); }
-    .service-icon {
-      width: 52px; height: 52px; background: var(--orange-glow);
-      border: 1px solid var(--orange); display: flex; align-items: center;
-      justify-content: center; margin-bottom: 24px;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    }
-    .service-icon svg { width: 24px; height: 24px; stroke: var(--orange); fill: none; stroke-width: 1.8; }
-    .service-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem; font-weight: 700;
-      letter-spacing: 1px; text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .service-desc {
-      font-size: 0.88rem; font-weight: 300; line-height: 1.7;
-      color: var(--muted);
-    }
+    .svc-card:hover .svc-icon { background:var(--navy); border-color:var(--navy); }
+    .svc-icon svg { width:21px; height:21px; stroke:var(--navy); fill:none; stroke-width:1.8; transition:stroke 0.2s; }
+    .svc-card:hover .svc-icon svg { stroke:#fff; }
+    .svc-name { font-size:0.93rem; font-weight:700; color:var(--navy); margin-bottom:9px; }
+    .svc-desc { font-size:0.82rem; color:var(--muted); line-height:1.75; }
 
-    /* ── WHY US ── */
-    #why { background: var(--dark); }
-    .why-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: start; margin-top: 60px;
+    /* FLEET */
+    #fleet { background:var(--off); }
+    .fleet-grid { display:flex; flex-direction:column; gap:2px; }
+    .fleet-item {
+      display:grid; grid-template-columns:1fr 1.1fr;
+      background:var(--white); border:1px solid var(--border);
+      transition:box-shadow 0.2s;
     }
-    .why-features { display: flex; flex-direction: column; gap: 28px; }
-    .why-feat {
-      display: flex; gap: 20px; align-items: flex-start;
-      padding: 24px; border: 1px solid var(--border);
-      background: var(--card);
-      transition: border-color 0.25s;
+    .fleet-item:hover { box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+    .fleet-item.reverse { direction:rtl; }
+    .fleet-item.reverse > * { direction:ltr; }
+    .fleet-info { padding:40px 38px; display:flex; flex-direction:column; justify-content:center; }
+    .fleet-tag {
+      font-size:0.63rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--accent); margin-bottom:9px;
     }
-    .why-feat:hover { border-color: var(--orange); }
-    .why-feat-icon {
-      width: 44px; height: 44px; flex-shrink: 0;
-      background: var(--orange); display: flex; align-items: center; justify-content: center;
+    .fleet-name {
+      font-family:Georgia, serif; font-size:1.4rem; color:var(--navy);
+      margin-bottom:14px; line-height:1.25;
     }
-    .why-feat-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
-    .why-feat-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem; font-weight: 700;
-      letter-spacing: 0.5px; margin-bottom: 6px;
+    .fleet-desc { font-size:0.84rem; color:var(--muted); line-height:1.8; margin-bottom:18px; }
+    .fleet-specs { display:flex; flex-direction:column; gap:6px; }
+    .fleet-spec {
+      display:flex; align-items:flex-start; gap:8px;
+      font-size:0.8rem; color:var(--text); line-height:1.5;
     }
-    .why-feat-desc { font-size: 0.87rem; color: var(--muted); font-weight: 300; line-height: 1.65; }
-    .why-big {
-      background: var(--orange); padding: 48px 40px;
-      display: flex; flex-direction: column; justify-content: center;
-      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%);
+    .fleet-spec::before {
+      content:''; width:5px; height:5px; flex-shrink:0;
+      background:var(--navy); border-radius:50%; margin-top:6px;
     }
-    .why-big-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem; color: #fff; line-height: 1; margin-bottom: 20px;
+    .fleet-photo { overflow:hidden; background:var(--light); min-height:280px; }
+    .fleet-photo img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .fleet-item:hover .fleet-photo img { transform:scale(1.03); }
+    .fleet-photo-placeholder {
+      width:100%; height:100%; min-height:280px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:14px; background:var(--light); padding:40px;
     }
-    .why-big-body {
-      font-size: 0.97rem; font-weight: 300; color: rgba(255,255,255,0.85);
-      line-height: 1.75; margin-bottom: 32px;
-    }
-    .why-num-row { display: flex; gap: 32px; }
-    .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: #fff; line-height: 1; }
-    .why-num-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.7); }
+    .fleet-photo-placeholder svg { opacity:0.18; }
+    .fleet-photo-placeholder p { font-size:0.75rem; color:var(--muted); text-align:center; }
 
-    /* ── COVERAGE / MAP SECTION ── */
-    #coverage { background: var(--black); }
-    .coverage-inner { margin-top: 60px; }
-    .coverage-bar {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 40px;
-      border: 1px solid var(--border); padding: 40px 48px;
-      background: var(--card);
+    /* GOODS */
+    #goods { background:var(--white); }
+    .goods-two { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    .goods-col { background:var(--off); padding:36px; border:1px solid var(--border); }
+    .goods-col-head {
+      font-size:0.73rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:var(--navy); border-bottom:2px solid var(--navy); padding-bottom:12px; margin-bottom:20px;
     }
-    .coverage-stat { text-align: center; }
-    .coverage-stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem; color: var(--orange); line-height: 1;
+    .goods-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .goods-list li {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:0.84rem; color:var(--text); line-height:1.55;
     }
-    .coverage-stat-label {
-      font-size: 0.75rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted);
-    }
-    .coverage-divider { width: 1px; height: 60px; background: var(--border); }
-    .coverage-map-wrap {
-      margin-top: 40px;
-      border: 1px solid var(--border); padding: 40px;
-      background: var(--dark);
-      display: flex; align-items: center; justify-content: center;
-      min-height: 280px; position: relative; overflow: hidden;
-    }
-    .coverage-map-placeholder {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 14px; color: var(--muted); text-align: center;
-    }
-    .coverage-map-placeholder svg { width: 64px; height: 64px; stroke: var(--orange); fill: none; opacity: 0.5; }
-    .coverage-map-placeholder p { font-size: 0.9rem; }
-    .coverage-map-placeholder strong { color: var(--white); }
+    .goods-list li span { color:var(--accent); font-weight:700; flex-shrink:0; }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--dark); }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.6fr;
-      gap: 60px; margin-top: 60px; align-items: start;
+    /* WHY US */
+    #why { background:var(--navy); }
+    #why .sec-title { color:#fff; }
+    #why .sec-label { color:rgba(255,255,255,0.45); }
+    #why .sec-label::after { background:rgba(255,255,255,0.25); }
+    #why .divider { background:var(--accent); }
+    .why-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; }
+    .why-card {
+      background:rgba(255,255,255,0.04); padding:30px 22px;
+      border:1px solid rgba(255,255,255,0.07); transition:background 0.2s;
     }
-    .contact-info { display: flex; flex-direction: column; gap: 28px; }
-    .contact-info-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 22px; border: 1px solid var(--border); background: var(--card);
+    .why-card:hover { background:rgba(255,255,255,0.08); }
+    .why-num {
+      font-family:Georgia, serif; font-size:2rem; color:rgba(255,255,255,0.1);
+      font-weight:bold; margin-bottom:18px; line-height:1;
     }
-    .contact-info-icon {
-      width: 42px; height: 42px; flex-shrink: 0;
-      background: var(--orange-glow); border: 1px solid var(--orange);
-      display: flex; align-items: center; justify-content: center;
+    .why-title { font-size:0.88rem; font-weight:700; color:#fff; margin-bottom:9px; }
+    .why-desc { font-size:0.79rem; color:rgba(255,255,255,0.48); line-height:1.75; }
+
+    /* COVERAGE */
+    #coverage { background:var(--off); }
+    .cov-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:2px; }
+    .cov-stat-box {
+      background:var(--white); border:1px solid var(--border); padding:32px; text-align:center;
     }
-    .contact-info-icon svg { width: 20px; height: 20px; stroke: var(--orange); fill: none; stroke-width: 2; }
-    .contact-info-label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 4px;
+    .cov-stat-num {
+      font-family:Georgia, serif; font-size:2.5rem; font-weight:bold; color:var(--navy); line-height:1;
     }
-    .contact-info-val { font-size: 0.97rem; color: var(--white); font-weight: 500; }
-    .contact-form-wrap {
-      background: var(--card); border: 1px solid var(--border);
-      padding: 48px 42px;
+    .cov-stat-label {
+      font-size:0.66rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:var(--muted); margin-top:6px;
     }
-    .form-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 28px;
+    .cov-bottom { background:var(--white); border:1px solid var(--border); padding:36px; }
+    .cov-city-head {
+      font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:var(--navy); margin-bottom:14px;
     }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
-    .form-label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 1.8px; text-transform: uppercase;
-      color: var(--muted);
+    .city-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:22px; }
+    .city-tag {
+      font-size:0.78rem; color:var(--text); border:1px solid var(--border);
+      padding:5px 14px; background:var(--off);
     }
-    .form-input, .form-select, .form-textarea {
-      background: var(--dark); border: 1px solid var(--border);
-      color: var(--white); font-family: 'Barlow', sans-serif;
-      font-size: 0.95rem; padding: 12px 16px;
-      outline: none; transition: border-color 0.2s;
-      width: 100%;
+    .cov-states { font-size:0.83rem; color:var(--muted); line-height:1.8; }
+    .cov-states strong { color:var(--navy); font-weight:700; }
+
+    /* CONTACT */
+    #contact { background:var(--white); }
+    .contact-wrap { display:grid; grid-template-columns:1fr 1.6fr; gap:48px; align-items:start; }
+    .contact-blocks { display:flex; flex-direction:column; gap:2px; }
+    .contact-block {
+      background:var(--off); border:1px solid var(--border);
+      padding:20px 22px; display:flex; align-items:flex-start; gap:13px;
     }
-    .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--orange); }
-    .form-select option { background: var(--dark); }
-    .form-textarea { resize: vertical; min-height: 120px; }
-    .form-submit {
-      width: 100%; background: var(--orange); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 1rem; letter-spacing: 2px;
-      text-transform: uppercase; padding: 16px;
-      border: none; cursor: pointer; margin-top: 8px;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      transition: background 0.2s, transform 0.15s;
+    .contact-block-icon {
+      width:36px; height:36px; flex-shrink:0; background:var(--navy);
+      display:flex; align-items:center; justify-content:center;
     }
-    .form-submit:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .contact-block-icon svg { width:17px; height:17px; stroke:#fff; fill:none; stroke-width:2; }
+    .contact-block-label {
+      font-size:0.63rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:3px;
+    }
+    .contact-block-val { font-size:0.88rem; color:var(--navy); font-weight:700; }
+    .contact-form { background:var(--off); border:1px solid var(--border); padding:40px 36px; }
+    .form-head { font-family:Georgia, serif; font-size:1.45rem; color:var(--navy); margin-bottom:26px; }
+    .frow { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+    .fg { display:flex; flex-direction:column; gap:5px; margin-bottom:13px; }
+    .flabel { font-size:0.65rem; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); }
+    .finput, .fselect, .ftextarea {
+      background:var(--white); border:1px solid var(--border);
+      color:var(--text); font-family:'Lato', sans-serif;
+      font-size:0.88rem; padding:11px 13px;
+      outline:none; transition:border-color 0.2s; width:100%;
+    }
+    .finput::placeholder, .ftextarea::placeholder { color:var(--subtle); }
+    .finput:focus, .fselect:focus, .ftextarea:focus { border-color:var(--navy); }
+    .fselect option { background:var(--white); }
+    .ftextarea { resize:vertical; min-height:110px; }
+    .fsubmit {
+      width:100%; background:var(--navy); color:#fff;
+      font-family:'Lato', sans-serif; font-weight:700;
+      font-size:0.84rem; letter-spacing:1px; text-transform:uppercase;
+      padding:13px; border:none; cursor:pointer; margin-top:4px;
+      transition:background 0.2s;
+    }
+    .fsubmit:hover { background:var(--blue); }
     .form-success {
-      display: none; text-align: center; padding: 28px;
-      color: var(--orange); font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.15rem; font-weight: 700; letter-spacing: 1px;
+      display:none; padding:22px; text-align:center;
+      font-size:0.92rem; font-weight:700; color:var(--navy);
+      border:1px solid var(--border); background:var(--white);
     }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      background: #070709; border-top: 1px solid var(--border);
-      padding: 60px 5vw 30px;
+      background:var(--navy); color:rgba(255,255,255,0.58);
+      padding:52px 5vw 26px;
     }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px; margin-bottom: 48px;
+    .footer-top {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px;
+      padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,0.09);
     }
-    .footer-brand p {
-      font-size: 0.9rem; font-weight: 300; color: var(--muted);
-      line-height: 1.7; margin-top: 16px; max-width: 280px;
+    .footer-brand-name { font-family:Georgia, serif; font-size:1.1rem; color:#fff; margin-bottom:12px; }
+    .footer-brand-desc { font-size:0.81rem; line-height:1.8; max-width:255px; }
+    .footer-col-head {
+      font-size:0.66rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+      color:rgba(255,255,255,0.38); margin-bottom:14px;
     }
-    .footer-col-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 18px;
-    }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul a {
-      font-size: 0.88rem; color: var(--muted);
-      text-decoration: none; transition: color 0.2s;
-    }
-    .footer-col ul a:hover { color: var(--white); }
+    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .footer-col ul a { font-size:0.82rem; color:rgba(255,255,255,0.52); transition:color 0.2s; }
+    .footer-col ul a:hover { color:#fff; }
     .footer-bottom {
-      border-top: 1px solid var(--border); padding-top: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 12px;
+      margin-top:26px; display:flex; justify-content:space-between;
+      align-items:center; flex-wrap:wrap; gap:8px;
     }
-    .footer-bottom p {
-      font-size: 0.8rem; color: var(--muted);
-    }
-    .footer-bottom span { color: var(--orange); }
+    .footer-bottom p { font-size:0.73rem; color:rgba(255,255,255,0.32); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero-truck { display: none; }
+    /* RESPONSIVE */
+    @media (max-width:1024px) {
+      .why-grid { grid-template-columns:repeat(3,1fr); }
     }
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .coverage-bar { flex-direction: column; text-align: center; }
-      .coverage-divider { width: 60px; height: 1px; }
-      .contact-form-wrap { padding: 28px 20px; }
+    @media (max-width:900px) {
+      .about-wrap, .contact-wrap { grid-template-columns:1fr; gap:36px; }
+      .services-grid { grid-template-columns:1fr 1fr; }
+      .cov-stats { grid-template-columns:1fr 1fr; }
+      .stats-bar { grid-template-columns:1fr 1fr; }
+      .footer-top { grid-template-columns:1fr 1fr; }
+      .hero-right { display:none; }
+      .goods-two { grid-template-columns:1fr; }
+      .fleet-item, .fleet-item.reverse { grid-template-columns:1fr; direction:ltr; }
+      .fleet-photo { min-height:220px; }
+      .fleet-photo-placeholder { min-height:220px; }
+    }
+    @media (max-width:640px) {
+      .nav-links { display:none; }
+      .topbar { flex-direction:column; gap:3px; font-size:11px; text-align:center; }
+      .services-grid { grid-template-columns:1fr; }
+      .why-grid { grid-template-columns:1fr 1fr; }
+      .footer-top { grid-template-columns:1fr; }
+      .frow { grid-template-columns:1fr; }
+      .cov-stats { grid-template-columns:1fr 1fr; }
+      .stats-bar { grid-template-columns:1fr 1fr; }
+      #hero { padding:56px 5vw; }
+      .about-img-grid { grid-template-rows:180px 180px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════ NAV ══════════════════════════ -->
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📍 Chennai, Tamil Nadu, India &nbsp;·&nbsp; Pan-India Operations Since 2016</span>
+  <span><a href="#contact">Get a Quote</a> &nbsp;|&nbsp; <a href="#contact">Contact Us</a></span>
+</div>
+
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#hero">
-    <div class="nav-logo-icon">
+  <div class="nav-brand">
+    <div class="nav-brand-icon">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 3h15v11H1zM16 8h4l3 3v3h-7V8z"/>
         <circle cx="5.5" cy="17.5" r="2.5"/>
         <circle cx="18.5" cy="17.5" r="2.5"/>
       </svg>
     </div>
-    <span class="nav-logo-text">DINESH <span>CARGO</span></span>
-  </a>
+    <div>
+      <div class="nav-brand-name">Dinesh Cargo Movers</div>
+      <div class="nav-brand-tagline">Pan-India Logistics &amp; Transport</div>
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#fleet">Fleet</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#coverage">Coverage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="#contact">Get a Quote</a>
+  <a class="nav-cta" href="#contact">Request a Quote</a>
 </nav>
 
-<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-bg-lines">
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-  <div class="hero-content">
-    <div class="hero-tag">India's Trusted Cargo Network</div>
-    <h1 class="hero-h1">MOVE<br/>FASTER.<br/><em>DELIVER</em><br/>SMARTER.</h1>
-    <p class="hero-sub">Dinesh Cargo connects businesses across India with reliable freight, road transport, and end-to-end logistics solutions — on time, every time.</p>
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-left">
+    <span class="hero-eyebrow">Established 2016 &nbsp;·&nbsp; Chennai, Tamil Nadu</span>
+    <h1 class="hero-h1">
+      End-to-End Logistics Solutions<br/>
+      <em>You Can Trust.</em>
+    </h1>
+    <p class="hero-sub">We deliver reliable trailer and container transportation across India. Trusted by leading industries, we specialise in FTL, LTL, ODC, project cargo and containerised services — with a focus on safety and on-time delivery.</p>
     <div class="hero-btns">
-      <a class="btn-primary" href="#contact">Request a Quote</a>
-      <a class="btn-ghost" href="#services">Our Services</a>
+      <a class="btn-solid" href="#contact">Request a Quote</a>
+      <a class="btn-outline" href="#services">Our Services</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">12+</span>
-        <span class="stat-label">Years Experience</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">500+</span>
-        <span class="stat-label">Happy Clients</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">28</span>
-        <span class="stat-label">States Covered</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">99%</span>
-        <span class="stat-label">On-Time Delivery</span>
-      </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">8+</div>
+      <div class="hero-stat-label">Years of Experience</div>
+    </div>
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">2000+</div>
+      <div class="hero-stat-label">Successful Deliveries</div>
+    </div>
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">100+</div>
+      <div class="hero-stat-label">Vehicles in Network</div>
+    </div>
+    <div class="hero-stat-box">
+      <div class="hero-stat-num">20+</div>
+      <div class="hero-stat-label">Industrial Clients</div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ MARQUEE ══════════════════════════ -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <!-- duplicated for seamless loop -->
-    <div class="marquee-item">Road Transport</div>
-    <div class="marquee-item">Air Cargo</div>
-    <div class="marquee-item">Warehousing</div>
-    <div class="marquee-item">Express Delivery</div>
-    <div class="marquee-item">Supply Chain</div>
-    <div class="marquee-item">Freight Forwarding</div>
-    <div class="marquee-item">Pan-India Coverage</div>
-    <div class="marquee-item">Road Transport</div>
-    <div class="marquee-item">Air Cargo</div>
-    <div class="marquee-item">Warehousing</div>
-    <div class="marquee-item">Express Delivery</div>
-    <div class="marquee-item">Supply Chain</div>
-    <div class="marquee-item">Freight Forwarding</div>
-    <div class="marquee-item">Pan-India Coverage</div>
-  </div>
-</div>
-
-<!-- ══════════════════════════ ABOUT ══════════════════════════ -->
+<!-- ABOUT -->
 <section id="about">
-  <div class="about-grid">
-    <div class="about-visual">
-      <div class="about-img-wrap">
-        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-          <rect x="60" y="180" width="340" height="140" rx="4" fill="#f97316" opacity="0.6"/>
-          <rect x="400" y="220" width="120" height="100" rx="4" fill="#f97316" opacity="0.4"/>
-          <circle cx="150" cy="335" r="30" fill="#222" stroke="#f97316" stroke-width="6"/>
-          <circle cx="150" cy="335" r="12" fill="#f97316"/>
-          <circle cx="430" cy="335" r="30" fill="#222" stroke="#f97316" stroke-width="6"/>
-          <circle cx="430" cy="335" r="12" fill="#f97316"/>
-          <rect x="80" y="100" width="80" height="80" rx="2" fill="#f97316" opacity="0.2" stroke="#f97316" stroke-width="1"/>
-          <rect x="180" y="120" width="60" height="60" rx="2" fill="#f97316" opacity="0.1" stroke="#f97316" stroke-width="1"/>
-          <rect x="260" y="90" width="100" height="90" rx="2" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1"/>
-          <line x1="0" y1="320" x2="600" y2="320" stroke="#f97316" stroke-width="1" stroke-dasharray="8 6" opacity="0.3"/>
-        </svg>
-        <div class="about-badge">
-          <span class="about-badge-num">12+</span>
-          <span class="about-badge-text">Years in Business</span>
-        </div>
+  <div class="about-wrap">
+    <div class="about-img-grid">
+      <div class="about-img-cell tall">
+        <img src="1775027005139_image.png" alt="Flatbed trailer with cargo" loading="lazy"/>
+      </div>
+      <div class="about-img-cell">
+        <img src="1775027031535_image.png" alt="Industrial drum transport" loading="lazy"/>
+      </div>
+      <div class="about-img-cell">
+        <img src="1775027046634_image.png" alt="Steel structure transport" loading="lazy"/>
       </div>
     </div>
     <div class="about-text">
-      <div class="section-tag">Who We Are</div>
-      <h2 class="section-title">BUILT ON <em>TRUST,</em> DRIVEN BY SPEED</h2>
-      <p>Dinesh Cargo is a premier logistics and transport company with over a decade of experience moving goods safely and efficiently across India. From small parcels to full truckloads — we handle it all.</p>
-      <p>We combine local expertise with a wide pan-India network to offer seamless, cost-effective cargo solutions for businesses of all sizes.</p>
-      <ul class="about-list">
-        <li>Pan-India road and freight network</li>
-        <li>Real-time shipment tracking</li>
-        <li>Dedicated customer support</li>
-        <li>Competitive and transparent pricing</li>
-        <li>Licensed, insured & fully compliant</li>
+      <div class="sec-label">Who We Are</div>
+      <h2 class="sec-title">A Trusted Name in Pan-India Logistics</h2>
+      <div class="divider"></div>
+      <p>Dinesh Cargo Movers is a Chennai-based logistics and transportation company established in 2016. We specialise in trailer and container transportation for industrial, commercial, and project-based requirements across India.</p>
+      <p>Over the past 8 years, we have built strong operational capabilities and a wide vendor network, enabling us to handle diverse cargo needs — from standard freight to over-dimensional and heavy-lift shipments — with professionalism and reliability.</p>
+      <ul class="about-checklist">
+        <li>Access to 100+ vehicles through a strong pan-India vendor network</li>
+        <li>Experienced in handling ODC and project cargo with proper permits</li>
+        <li>Trusted by 20+ industrial clients across sectors</li>
+        <li>2,000+ successful deliveries completed across India</li>
+        <li>Serving 100+ cities across all major Indian states</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ SERVICES ══════════════════════════ -->
-<section id="services">
-  <div class="services-header">
-    <div>
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-title">OUR <em>SERVICES</em></h2>
-    </div>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="sbar-item">
+    <div class="sbar-num">8+</div>
+    <div class="sbar-label">Years Since 2016</div>
   </div>
+  <div class="sbar-item">
+    <div class="sbar-num">100+</div>
+    <div class="sbar-label">Vehicles in Network</div>
+  </div>
+  <div class="sbar-item">
+    <div class="sbar-num">2000+</div>
+    <div class="sbar-label">Deliveries Completed</div>
+  </div>
+  <div class="sbar-item">
+    <div class="sbar-num">100+</div>
+    <div class="sbar-label">Cities Served</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-label">What We Offer</div>
+  <h2 class="sec-title">Our Services</h2>
+  <div class="divider"></div>
   <div class="services-grid">
 
-    <div class="service-card">
-      <span class="service-num">01</span>
-      <div class="service-icon">
+    <div class="svc-card">
+      <span class="svc-num">01</span>
+      <div class="svc-icon">
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
-      <div class="service-name">Road Transport</div>
-      <p class="service-desc">Full truckload (FTL) and part truckload (PTL) services across all major highways. Door-to-door delivery with GPS-tracked vehicles.</p>
+      <div class="svc-name">Full Load Transportation (FTL)</div>
+      <p class="svc-desc">Dedicated vehicles for large shipments, ensuring faster delivery and secure handling across India. Ideal for high-volume or time-sensitive consignments.</p>
     </div>
 
-    <div class="service-card">
-      <span class="service-num">02</span>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>
+    <div class="svc-card">
+      <span class="svc-num">02</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
       </div>
-      <div class="service-name">Express Cargo</div>
-      <p class="service-desc">Time-critical shipments delivered with priority handling. Same-day and next-day express options for urgent consignments.</p>
+      <div class="svc-name">Part Load Transportation (LTL)</div>
+      <p class="svc-desc">Cost-effective solutions for smaller shipments by sharing vehicle space. Pay only for what you use, without compromising on safety or reliability.</p>
     </div>
 
-    <div class="service-card">
-      <span class="service-num">03</span>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <div class="svc-card">
+      <span class="svc-num">03</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div class="service-name">Warehousing</div>
-      <p class="service-desc">Secure, managed warehouse facilities for short and long-term storage needs. Inventory management and pick-and-pack solutions.</p>
+      <div class="svc-name">ODC – Over Dimensional Cargo</div>
+      <p class="svc-desc">Specialised transportation for oversized and heavy cargo. We arrange all government permits, route planning, and escort vehicles for safe execution.</p>
     </div>
 
-    <div class="service-card">
-      <span class="service-num">04</span>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <div class="svc-card">
+      <span class="svc-num">04</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
       </div>
-      <div class="service-name">Supply Chain Management</div>
-      <p class="service-desc">End-to-end supply chain consulting and execution. We optimise your logistics from procurement to last-mile delivery.</p>
+      <div class="svc-name">Project Cargo</div>
+      <p class="svc-desc">End-to-end logistics for large industrial and project-based shipments including machinery and heavy equipment. Managed from origin to project site.</p>
     </div>
 
-    <div class="service-card">
-      <span class="service-num">05</span>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <div class="svc-card">
+      <span class="svc-num">05</span>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
       </div>
-      <div class="service-name">Last-Mile Delivery</div>
-      <p class="service-desc">Efficient delivery to residential and commercial addresses. Proof of delivery, real-time updates, and flexible delivery windows.</p>
+      <div class="svc-name">Containerised Services</div>
+      <p class="svc-desc">Efficient transportation of 20 ft and 40 ft containers for domestic and export/import requirements. Suitable for a wide range of industries and cargo types.</p>
     </div>
 
-    <div class="service-card">
-      <span class="service-num">06</span>
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <div class="svc-card" style="background:var(--navy);">
+      <div class="svc-icon" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.18);">
+        <svg viewBox="0 0 24 24" style="stroke:#fff;"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0111.19 18a19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 3.18 2 2 0 014.11 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z"/></svg>
       </div>
-      <div class="service-name">Shipment Tracking</div>
-      <p class="service-desc">Live GPS tracking for all consignments. Customers get real-time visibility and automated status notifications via SMS and email.</p>
+      <div class="svc-name" style="color:#fff; margin-bottom:9px;">Enquire About a Shipment</div>
+      <p class="svc-desc" style="color:rgba(255,255,255,0.55); margin-bottom:20px;">Tell us your origin, destination, cargo type and we will provide a competitive quote without delay.</p>
+      <a href="#contact" style="display:inline-block; padding:10px 20px; background:var(--accent); color:#fff; font-size:0.77rem; font-weight:700; letter-spacing:0.8px; text-transform:uppercase;">Get a Quote →</a>
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════════ WHY US ══════════════════════════ -->
+<!-- VEHICLES USED (FLEET) -->
+<section id="fleet">
+  <div class="sec-label">Infrastructure</div>
+  <h2 class="sec-title">Vehicles We Use</h2>
+  <div class="divider"></div>
+  <p class="sec-sub" style="margin-bottom:44px;">We maintain access to a wide range of specialised vehicles through our strong vendor network, ensuring the right vehicle for every cargo requirement.</p>
+
+  <div class="fleet-grid">
+
+    <!-- 1 -->
+    <div class="fleet-item">
+      <div class="fleet-info">
+        <div class="fleet-tag">Vehicle Type 01</div>
+        <div class="fleet-name">Flatbed Trailer (40 ft)</div>
+        <p class="fleet-desc">The most versatile trailer for industrial and commercial cargo. The open flat platform allows loading from the sides, rear, or by crane — making it ideal for heavy machinery, structural steel, construction panels, and large packaged goods.</p>
+        <div class="fleet-specs">
+          <div class="fleet-spec">Payload capacity: Up to 25–30 tonnes</div>
+          <div class="fleet-spec">Suitable for: Machinery, steel, construction material, industrial panels</div>
+          <div class="fleet-spec">Platform length: 40 feet</div>
+        </div>
+      </div>
+      <div class="fleet-photo">
+        <img src="1775027005139_image.png" alt="40ft Flatbed Trailer loaded with insulation panels" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="fleet-item reverse">
+      <div class="fleet-info">
+        <div class="fleet-tag">Vehicle Type 02</div>
+        <div class="fleet-name">Semi Low-Bed Trailer</div>
+        <p class="fleet-desc">Designed for transporting tall or heavy equipment where height clearance is critical. The lowered deck reduces the overall transport height, making it possible to safely move industrial drums, reactors, transformers, and oversized cylindrical equipment on public roads.</p>
+        <div class="fleet-specs">
+          <div class="fleet-spec">Payload capacity: Up to 40–60 tonnes</div>
+          <div class="fleet-spec">Suitable for: Industrial drums, reactors, transformers, cylinders</div>
+          <div class="fleet-spec">Secured with heavy-duty chains and lashing</div>
+        </div>
+      </div>
+      <div class="fleet-photo">
+        <img src="1775027031535_image.png" alt="Semi low-bed trailer with large industrial cylinder" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="fleet-item">
+      <div class="fleet-info">
+        <div class="fleet-tag">Vehicle Type 03</div>
+        <div class="fleet-name">Trailer for ODC / Steel Structures</div>
+        <p class="fleet-desc">Heavy-duty trailers configured for over-dimensional cargo such as large steel trusses, bridge girders, pre-fabricated frames, and industrial structures. All movement is planned with government permits, route surveys, and pilot vehicles where required.</p>
+        <div class="fleet-specs">
+          <div class="fleet-spec">ODC permits arranged for all state routes</div>
+          <div class="fleet-spec">Suitable for: Steel trusses, girders, pre-fab frames, structural steel</div>
+          <div class="fleet-spec">Pilot/escort vehicle arranged when required</div>
+        </div>
+      </div>
+      <div class="fleet-photo">
+        <img src="1775027046634_image.png" alt="Flatbed trailer transporting large steel truss structure" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="fleet-item reverse">
+      <div class="fleet-info">
+        <div class="fleet-tag">Vehicle Type 04</div>
+        <div class="fleet-name">Heavy Flatbed – Industrial Structures</div>
+        <p class="fleet-desc">Robust flatbed trucks for the movement of heavy pre-fabricated or structural industrial components. Suitable for repetitive project cargo movement where consistent vehicle capacity and loading height compatibility is essential.</p>
+        <div class="fleet-specs">
+          <div class="fleet-spec">Suitable for: Pre-fab structures, heavy steel frames, industrial components</div>
+          <div class="fleet-spec">Deployed for project-based repeated movements</div>
+          <div class="fleet-spec">Available in multi-axle configurations</div>
+        </div>
+      </div>
+      <div class="fleet-photo">
+        <img src="1775027057171_image.png" alt="Flatbed truck with heavy steel frame" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- 5 – Container Truck (illustration) -->
+    <div class="fleet-item">
+      <div class="fleet-info">
+        <div class="fleet-tag">Vehicle Type 05</div>
+        <div class="fleet-name">20 ft &amp; 40 ft Container Trucks</div>
+        <p class="fleet-desc">Standard ISO container trucks used for domestic and import/export cargo movement. Available in 20 ft and 40 ft configurations to accommodate varying volumes. Ideal for FMCG goods, consumer products, and general cargo requiring enclosed transport.</p>
+        <div class="fleet-specs">
+          <div class="fleet-spec">Available in 20 ft and 40 ft sizes</div>
+          <div class="fleet-spec">Suitable for: FMCG, packaged goods, export/import cargo</div>
+          <div class="fleet-spec">Enclosed, weather-protected transport</div>
+        </div>
+      </div>
+      <div class="fleet-photo-placeholder">
+        <svg viewBox="0 0 120 70" width="140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="12" width="84" height="42" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <rect x="88" y="22" width="26" height="32" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <line x1="88" y1="30" x2="114" y2="30" stroke="#1a2742" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <circle cx="22" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <circle cx="22" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
+          <circle cx="96" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <circle cx="96" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
+          <line x1="4" y1="54" x2="4" y2="58" stroke="#1a2742" stroke-width="2"/>
+          <line x1="88" y1="54" x2="88" y2="58" stroke="#1a2742" stroke-width="2"/>
+        </svg>
+        <p>20 ft / 40 ft Container Truck</p>
+      </div>
+    </div>
+
+    <!-- 6 – Closed Body (illustration) -->
+    <div class="fleet-item reverse">
+      <div class="fleet-info">
+        <div class="fleet-tag">Vehicle Type 06</div>
+        <div class="fleet-name">Closed Body Truck (20 ft / 32 ft)</div>
+        <p class="fleet-desc">Fully enclosed trucks ideal for FMCG, food products, consumer goods and packaged items that require protection from weather and dust. Available in 20 ft and 32 ft body variants to match shipment volumes efficiently and cost-effectively.</p>
+        <div class="fleet-specs">
+          <div class="fleet-spec">Available in 20 ft and 32 ft body sizes</div>
+          <div class="fleet-spec">Suitable for: FMCG, food products, packaged consumer goods</div>
+          <div class="fleet-spec">Fully enclosed, weather-protected body</div>
+        </div>
+      </div>
+      <div class="fleet-photo-placeholder">
+        <svg viewBox="0 0 120 70" width="140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="10" width="76" height="44" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <rect x="80" y="18" width="34" height="36" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <line x1="80" y1="28" x2="114" y2="28" stroke="#1a2742" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <rect x="82" y="20" width="8" height="6" rx="1" fill="#1a2742" opacity="0.15"/>
+          <rect x="93" y="20" width="18" height="6" rx="1" fill="#1a2742" opacity="0.1"/>
+          <circle cx="20" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <circle cx="20" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
+          <circle cx="92" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
+          <circle cx="92" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
+        </svg>
+        <p>Closed Body 20 ft / 32 ft Truck</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GOODS HANDLED -->
+<section id="goods">
+  <div class="sec-label">Capabilities</div>
+  <h2 class="sec-title">Goods We Handle &amp; Vehicles Available</h2>
+  <div class="divider"></div>
+  <div class="goods-two">
+    <div class="goods-col">
+      <div class="goods-col-head">Types of Goods Handled</div>
+      <ul class="goods-list">
+        <li><span>→</span> Industrial machinery and heavy equipment</li>
+        <li><span>→</span> Engineering and project cargo</li>
+        <li><span>→</span> Construction materials (steel, cement, panels)</li>
+        <li><span>→</span> Heavy and oversized equipment (ODC category)</li>
+        <li><span>→</span> Containerised goods — domestic, import &amp; export</li>
+        <li><span>→</span> FMCG and consumer goods (food products, packaged items)</li>
+        <li><span>→</span> Pre-fabricated structures and steel frameworks</li>
+        <li><span>→</span> Industrial drums, reactors, and cylindrical equipment</li>
+      </ul>
+    </div>
+    <div class="goods-col">
+      <div class="goods-col-head">Vehicle Types Available</div>
+      <ul class="goods-list">
+        <li><span>→</span> Flatbed trailers (40 ft)</li>
+        <li><span>→</span> Low-bed and semi low-bed trailers</li>
+        <li><span>→</span> 20 ft &amp; 40 ft container trucks</li>
+        <li><span>→</span> Closed body trucks — 20 ft and 32 ft (for FMCG)</li>
+        <li><span>→</span> Refrigerated vehicles (arranged as per requirement)</li>
+        <li><span>→</span> Light commercial vehicles for local distribution</li>
+        <li><span>→</span> Open trucks as per requirement</li>
+        <li><span>→</span> Multi-axle trailers for heavy project cargo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
 <section id="why">
-  <div class="section-tag">Our Edge</div>
-  <h2 class="section-title">WHY CHOOSE <em>DINESH CARGO</em></h2>
+  <div class="sec-label">Our Advantage</div>
+  <h2 class="sec-title">Why Choose Dinesh Cargo Movers</h2>
+  <div class="divider"></div>
   <div class="why-grid">
-    <div class="why-features">
-      <div class="why-feat">
-        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div>
-          <div class="why-feat-title">Safe & Insured Shipments</div>
-          <p class="why-feat-desc">Every consignment is insured and handled with care. We take full responsibility from pick-up to delivery.</p>
-        </div>
-      </div>
-      <div class="why-feat">
-        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div>
-          <div class="why-feat-title">On-Time, Every Time</div>
-          <p class="why-feat-desc">99% on-time delivery record maintained across thousands of shipments nationwide.</p>
-        </div>
-      </div>
-      <div class="why-feat">
-        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div>
-          <div class="why-feat-title">Dedicated Account Support</div>
-          <p class="why-feat-desc">A personal account manager for every client. We're available 24/7 to resolve any queries or concerns.</p>
-        </div>
-      </div>
-      <div class="why-feat">
-        <div class="why-feat-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <div>
-          <div class="why-feat-title">Transparent Pricing</div>
-          <p class="why-feat-desc">No hidden fees. Clear, upfront quotations with detailed breakdowns for every service.</p>
-        </div>
-      </div>
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">Reliable &amp; Timely Delivery</div>
+      <p class="why-desc">Our operations are structured to ensure on-time pickup and delivery on every consignment. Your timelines are our commitment.</p>
     </div>
-    <div class="why-big">
-      <div class="why-big-title">DELIVERING INDIA'S TOMORROW, TODAY.</div>
-      <p class="why-big-body">With a growing fleet, modern infrastructure, and a passionate team, Dinesh Cargo is committed to being the most reliable logistics partner for Indian businesses. Whether you're shipping across the street or across the country — we're your people.</p>
-      <div class="why-num-row">
-        <div>
-          <div class="why-num">50+</div>
-          <div class="why-num-label">Fleet Vehicles</div>
-        </div>
-        <div>
-          <div class="why-num">28</div>
-          <div class="why-num-label">States Covered</div>
-        </div>
-        <div>
-          <div class="why-num">500+</div>
-          <div class="why-num-label">Clients Served</div>
-        </div>
-      </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Strong Pan-India Network</div>
+      <p class="why-desc">Coverage across all major states and 100+ cities with a reliable vendor network that ensures we can operate anywhere in India.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">Quick Vehicle Availability</div>
+      <p class="why-desc">Access to 100+ vehicles ensures fast deployment for both planned and urgent shipments, reducing downtime for your business.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Experience with Leading Industries</div>
+      <p class="why-desc">8+ years serving 20+ industrial clients gives us deep understanding of complex cargo requirements and project logistics challenges.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">05</div>
+      <div class="why-title">Safe &amp; Professional Handling</div>
+      <p class="why-desc">From proper lashing to ODC permits and escort vehicles — your cargo is handled professionally and safely throughout the entire journey.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ COVERAGE ══════════════════════════ -->
+<!-- COVERAGE -->
 <section id="coverage">
-  <div class="section-tag">Our Reach</div>
-  <h2 class="section-title">PAN-INDIA <em>COVERAGE</em></h2>
-  <div class="coverage-inner">
-    <div class="coverage-bar">
-      <div class="coverage-stat">
-        <div class="coverage-stat-num">28+</div>
-        <div class="coverage-stat-label">States & UTs</div>
-      </div>
-      <div class="coverage-divider"></div>
-      <div class="coverage-stat">
-        <div class="coverage-stat-num">400+</div>
-        <div class="coverage-stat-label">Pin Codes Served</div>
-      </div>
-      <div class="coverage-divider"></div>
-      <div class="coverage-stat">
-        <div class="coverage-stat-num">50+</div>
-        <div class="coverage-stat-label">Major Cities</div>
-      </div>
-      <div class="coverage-divider"></div>
-      <div class="coverage-stat">
-        <div class="coverage-stat-num">24/7</div>
-        <div class="coverage-stat-label">Operations</div>
-      </div>
+  <div class="sec-label">Our Reach</div>
+  <h2 class="sec-title">Pan-India Coverage</h2>
+  <div class="divider"></div>
+  <div class="cov-stats">
+    <div class="cov-stat-box">
+      <div class="cov-stat-num">8+</div>
+      <div class="cov-stat-label">Years of Operations</div>
     </div>
-    <div class="coverage-map-wrap">
-      <div class="coverage-map-placeholder">
-        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/><path d="M3 20h18" stroke-dasharray="3 2"/></svg>
-        <p><strong>Service available across all major Indian cities</strong><br/>Tamil Nadu · Karnataka · Maharashtra · Delhi · Gujarat · Rajasthan · and more</p>
-      </div>
+    <div class="cov-stat-box">
+      <div class="cov-stat-num">100+</div>
+      <div class="cov-stat-label">Vehicles in Network</div>
     </div>
+    <div class="cov-stat-box">
+      <div class="cov-stat-num">2000+</div>
+      <div class="cov-stat-label">Deliveries Completed</div>
+    </div>
+    <div class="cov-stat-box">
+      <div class="cov-stat-num">100+</div>
+      <div class="cov-stat-label">Cities Served</div>
+    </div>
+  </div>
+  <div class="cov-bottom">
+    <div class="cov-city-head">Key Cities We Serve</div>
+    <div class="city-tags">
+      <span class="city-tag">Chennai</span><span class="city-tag">Bengaluru</span>
+      <span class="city-tag">Hyderabad</span><span class="city-tag">Mumbai</span>
+      <span class="city-tag">Pune</span><span class="city-tag">Delhi NCR</span>
+      <span class="city-tag">Ahmedabad</span><span class="city-tag">Kolkata</span>
+      <span class="city-tag">Coimbatore</span><span class="city-tag">Visakhapatnam</span>
+      <span class="city-tag">Nagpur</span><span class="city-tag">Surat</span>
+      <span class="city-tag">Jaipur</span><span class="city-tag">Kochi</span>
+      <span class="city-tag">Bhubaneswar</span><span class="city-tag">+ Many More</span>
+    </div>
+    <p class="cov-states"><strong>States We Operate In:</strong> Tamil Nadu · Karnataka · Andhra Pradesh · Telangana · Maharashtra · Gujarat · Haryana · Delhi NCR · West Bengal · Rajasthan · Kerala · Madhya Pradesh · Odisha · Punjab · and all major states across India.</p>
   </div>
 </section>
 
-<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<!-- CONTACT -->
 <section id="contact">
-  <div class="section-tag">Get In Touch</div>
-  <h2 class="section-title">CONTACT <em>US</em></h2>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="contact-info-item">
-        <div class="contact-info-icon">
+  <div class="sec-label">Reach Us</div>
+  <h2 class="sec-title">Contact Us</h2>
+  <div class="divider"></div>
+  <div class="contact-wrap">
+    <div class="contact-blocks">
+      <div class="contact-block">
+        <div class="contact-block-icon">
           <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0111.19 18a19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 3.18 2 2 0 014.11 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z"/></svg>
         </div>
         <div>
-          <div class="contact-info-label">Phone</div>
-          <div class="contact-info-val">+91 98765 43210</div>
+          <div class="contact-block-label">Phone</div>
+          <div class="contact-block-val">Contact us to get our number</div>
         </div>
       </div>
-      <div class="contact-info-item">
-        <div class="contact-info-icon">
+      <div class="contact-block">
+        <div class="contact-block-icon">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <div>
-          <div class="contact-info-label">Email</div>
-          <div class="contact-info-val">info@dineshcargo.in</div>
+          <div class="contact-block-label">Email</div>
+          <div class="contact-block-val">Contact us to get our email</div>
         </div>
       </div>
-      <div class="contact-info-item">
-        <div class="contact-info-icon">
+      <div class="contact-block">
+        <div class="contact-block-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         </div>
         <div>
-          <div class="contact-info-label">Head Office</div>
-          <div class="contact-info-val">Chennai, Tamil Nadu, India</div>
+          <div class="contact-block-label">Head Office</div>
+          <div class="contact-block-val">Chennai, Tamil Nadu, India</div>
         </div>
       </div>
-      <div class="contact-info-item">
-        <div class="contact-info-icon">
+      <div class="contact-block">
+        <div class="contact-block-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <div>
-          <div class="contact-info-label">Working Hours</div>
-          <div class="contact-info-val">Mon–Sat: 8:00 AM – 8:00 PM</div>
+          <div class="contact-block-label">Working Hours</div>
+          <div class="contact-block-val">Monday – Saturday: 9:00 AM – 7:00 PM</div>
         </div>
       </div>
     </div>
 
-    <div class="contact-form-wrap">
-      <div class="form-title">SEND US A MESSAGE</div>
+    <div class="contact-form">
+      <div class="form-head">Send Us a Message</div>
       <form id="contactForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input class="form-input" type="text" placeholder="Full name" required/>
+        <div class="frow">
+          <div class="fg">
+            <label class="flabel">Full Name</label>
+            <input class="finput" type="text" placeholder="Your full name" required/>
           </div>
-          <div class="form-group">
-            <label class="form-label">Phone Number</label>
-            <input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX"/>
+          <div class="fg">
+            <label class="flabel">Phone Number</label>
+            <input class="finput" type="tel" placeholder="+91 XXXXX XXXXX"/>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="your@email.com" required/>
+        <div class="fg">
+          <label class="flabel">Email Address</label>
+          <input class="finput" type="email" placeholder="your@email.com" required/>
         </div>
-        <div class="form-group">
-          <label class="form-label">Service Required</label>
-          <select class="form-select">
+        <div class="fg">
+          <label class="flabel">Service Required</label>
+          <select class="fselect">
             <option value="">Select a service...</option>
-            <option>Road Transport (FTL/PTL)</option>
-            <option>Express Cargo</option>
-            <option>Warehousing & Storage</option>
-            <option>Supply Chain Management</option>
-            <option>Last-Mile Delivery</option>
+            <option>Full Load Transportation (FTL)</option>
+            <option>Part Load Transportation (LTL)</option>
+            <option>ODC / Over Dimensional Cargo</option>
+            <option>Project Cargo</option>
+            <option>Containerised Services</option>
             <option>General Enquiry</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Describe your requirement — origin, destination, cargo type, weight..."></textarea>
+        <div class="fg">
+          <label class="flabel">Your Requirement</label>
+          <textarea class="ftextarea" placeholder="Describe your shipment — origin, destination, cargo type, approximate weight/dimensions..."></textarea>
         </div>
-        <button type="submit" class="form-submit">Send Message →</button>
+        <button type="submit" class="fsubmit">Send Message</button>
       </form>
       <div class="form-success" id="formSuccess">
-        ✓ Message Sent! We'll get back to you within 24 hours.
+        ✓ Thank you. Your message has been received. We will get back to you shortly.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a class="nav-logo" href="#hero" style="display:inline-flex;">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 3h15v11H1zM16 8h4l3 3v3h-7V8z"/>
-            <circle cx="5.5" cy="17.5" r="2.5"/>
-            <circle cx="18.5" cy="17.5" r="2.5"/>
-          </svg>
-        </div>
-        <span class="nav-logo-text">DINESH <span>CARGO</span></span>
-      </a>
-      <p>Reliable logistics and cargo transport solutions across India. Your goods, our responsibility.</p>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Dinesh Cargo Movers</div>
+      <p class="footer-brand-desc">End-to-end logistics solutions including trailer and container transportation across India. Trusted by leading industries since 2016.</p>
     </div>
     <div class="footer-col">
-      <div class="footer-col-title">Quick Links</div>
+      <div class="footer-col-head">Quick Links</div>
       <ul>
         <li><a href="#about">About Us</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#why">Why Us</a></li>
+        <li><a href="#fleet">Fleet &amp; Vehicles</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
         <li><a href="#coverage">Coverage</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <div class="footer-col-title">Services</div>
+      <div class="footer-col-head">Services</div>
       <ul>
-        <li><a href="#services">Road Transport</a></li>
-        <li><a href="#services">Express Cargo</a></li>
-        <li><a href="#services">Warehousing</a></li>
-        <li><a href="#services">Last-Mile Delivery</a></li>
-        <li><a href="#services">Supply Chain</a></li>
+        <li><a href="#services">Full Load (FTL)</a></li>
+        <li><a href="#services">Part Load (LTL)</a></li>
+        <li><a href="#services">ODC Cargo</a></li>
+        <li><a href="#services">Project Cargo</a></li>
+        <li><a href="#services">Containerised</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <div class="footer-col-title">Contact</div>
+      <div class="footer-col-head">Contact</div>
       <ul>
-        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
-        <li><a href="mailto:info@dineshcargo.in">info@dineshcargo.in</a></li>
-        <li><a href="#coverage">Chennai, Tamil Nadu</a></li>
+        <li><a href="#contact">Chennai, Tamil Nadu</a></li>
+        <li><a href="#contact">Pan India Operations</a></li>
+        <li><a href="#contact">Request a Quote</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 <span>Dinesh Cargo</span>. All rights reserved.</p>
-    <p>Designed with ❤ for reliable logistics</p>
+    <p>© 2025 Dinesh Cargo Movers. All rights reserved. &nbsp;|&nbsp; Established 2016, Chennai, Tamil Nadu.</p>
+    <p>Pan-India Logistics &amp; Transport Solutions</p>
   </div>
 </footer>
 
 <script>
-  // Form submit handler
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     this.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
-  });
-
-  // Intersection observer for subtle fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.style.opacity = '1';
-        el.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.service-card, .why-feat, .contact-info-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s';
-    observer.observe(el);
   });
 </script>
 </body>
