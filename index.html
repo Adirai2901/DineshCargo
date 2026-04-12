@@ -66,8 +66,8 @@
       display:flex; align-items:center; justify-content:center; flex-shrink:0;
     }
     .nav-brand-icon svg { width:22px; height:22px; fill:#fff; }
-    .nav-brand-name { font-size:1.05rem; font-weight:700; color:var(--navy); letter-spacing:0.3px; }
-    .nav-brand-tagline { font-size:0.63rem; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
+    .nav-brand-name { font-size:1.05rem; font-weight:700; color:var(--navy); letter-spacing:0.3px; white-space:nowrap; }
+    .nav-brand-tagline { font-size:0.63rem; color:var(--muted); letter-spacing:1px; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:180px; }
 
     .nav-links { display:flex; gap:0; list-style:none; }
     .nav-links a {
@@ -348,6 +348,31 @@
       color:var(--muted); margin-bottom:3px;
     }
     .contact-block-val { font-size:0.88rem; color:var(--navy); font-weight:700; }
+    .contact-block-val a { color:var(--navy); font-weight:700; transition:color 0.2s; }
+    .contact-block-val a:hover { color:var(--accent); }
+    /* Quick contact strip above the form */
+    .form-quick-contact {
+      display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px;
+    }
+    .fqc-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 18px; font-size:0.8rem; font-weight:700;
+      letter-spacing:0.5px; text-transform:uppercase; border:2px solid var(--navy);
+      color:var(--navy); background:transparent; transition:all 0.2s; cursor:pointer;
+    }
+    .fqc-btn:hover { background:var(--navy); color:#fff; }
+    .fqc-btn.whatsapp { border-color:#25d366; color:#25d366; }
+    .fqc-btn.whatsapp:hover { background:#25d366; color:#fff; }
+    .fqc-btn svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; flex-shrink:0; }
+    .fqc-btn.whatsapp svg { fill:currentColor; stroke:none; }
+    .form-or-divider {
+      display:flex; align-items:center; gap:12px;
+      font-size:0.65rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:18px;
+    }
+    .form-or-divider::before, .form-or-divider::after {
+      content:''; flex:1; height:1px; background:var(--border);
+    }
     .contact-form { background:var(--off); border:1px solid var(--border); padding:40px 36px; }
     .form-head { font-family:Georgia, serif; font-size:1.45rem; color:var(--navy); margin-bottom:26px; }
     .frow { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
@@ -419,6 +444,7 @@
     }
     @media (max-width:640px) {
       .nav-links { display:none; }
+      .nav-brand-tagline { display:none; }
       .topbar { flex-direction:column; gap:3px; font-size:11px; text-align:center; }
       .services-grid { grid-template-columns:1fr; }
       .why-grid { grid-template-columns:1fr 1fr; }
@@ -457,9 +483,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#fleet">Fleet</a></li>
     <li><a href="#why">Why Us</a></li>
-    <li><a href="#coverage">Coverage</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a class="nav-cta" href="#contact">Request a Quote</a>
@@ -615,176 +639,9 @@
   </div>
 </section>
 
-<!-- VEHICLES USED (FLEET) -->
-<section id="fleet">
-  <div class="sec-label">Infrastructure</div>
-  <h2 class="sec-title">Vehicles We Use</h2>
-  <div class="divider"></div>
-  <p class="sec-sub" style="margin-bottom:44px;">We maintain access to a wide range of specialised vehicles through our strong vendor network, ensuring the right vehicle for every cargo requirement.</p>
 
-  <div class="fleet-grid">
 
-    <!-- 1 -->
-    <div class="fleet-item">
-      <div class="fleet-info">
-        <div class="fleet-tag">Vehicle Type 01</div>
-        <div class="fleet-name">Flatbed Trailer (40 ft)</div>
-        <p class="fleet-desc">The most versatile trailer for industrial and commercial cargo. The open flat platform allows loading from the sides, rear, or by crane — making it ideal for heavy machinery, structural steel, construction panels, and large packaged goods.</p>
-        <div class="fleet-specs">
-          <div class="fleet-spec">Payload capacity: Up to 25–30 tonnes</div>
-          <div class="fleet-spec">Suitable for: Machinery, steel, construction material, industrial panels</div>
-          <div class="fleet-spec">Platform length: 40 feet</div>
-        </div>
-      </div>
-      <div class="fleet-photo">
-        <img src="1775027005139_image.png" alt="40ft Flatbed Trailer loaded with insulation panels" loading="lazy"/>
-      </div>
-    </div>
 
-    <!-- 2 -->
-    <div class="fleet-item reverse">
-      <div class="fleet-info">
-        <div class="fleet-tag">Vehicle Type 02</div>
-        <div class="fleet-name">Semi Low-Bed Trailer</div>
-        <p class="fleet-desc">Designed for transporting tall or heavy equipment where height clearance is critical. The lowered deck reduces the overall transport height, making it possible to safely move industrial drums, reactors, transformers, and oversized cylindrical equipment on public roads.</p>
-        <div class="fleet-specs">
-          <div class="fleet-spec">Payload capacity: Up to 40–60 tonnes</div>
-          <div class="fleet-spec">Suitable for: Industrial drums, reactors, transformers, cylinders</div>
-          <div class="fleet-spec">Secured with heavy-duty chains and lashing</div>
-        </div>
-      </div>
-      <div class="fleet-photo">
-        <img src="1775027031535_image.png" alt="Semi low-bed trailer with large industrial cylinder" loading="lazy"/>
-      </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="fleet-item">
-      <div class="fleet-info">
-        <div class="fleet-tag">Vehicle Type 03</div>
-        <div class="fleet-name">Trailer for ODC / Steel Structures</div>
-        <p class="fleet-desc">Heavy-duty trailers configured for over-dimensional cargo such as large steel trusses, bridge girders, pre-fabricated frames, and industrial structures. All movement is planned with government permits, route surveys, and pilot vehicles where required.</p>
-        <div class="fleet-specs">
-          <div class="fleet-spec">ODC permits arranged for all state routes</div>
-          <div class="fleet-spec">Suitable for: Steel trusses, girders, pre-fab frames, structural steel</div>
-          <div class="fleet-spec">Pilot/escort vehicle arranged when required</div>
-        </div>
-      </div>
-      <div class="fleet-photo">
-        <img src="1775027046634_image.png" alt="Flatbed trailer transporting large steel truss structure" loading="lazy"/>
-      </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="fleet-item reverse">
-      <div class="fleet-info">
-        <div class="fleet-tag">Vehicle Type 04</div>
-        <div class="fleet-name">Heavy Flatbed – Industrial Structures</div>
-        <p class="fleet-desc">Robust flatbed trucks for the movement of heavy pre-fabricated or structural industrial components. Suitable for repetitive project cargo movement where consistent vehicle capacity and loading height compatibility is essential.</p>
-        <div class="fleet-specs">
-          <div class="fleet-spec">Suitable for: Pre-fab structures, heavy steel frames, industrial components</div>
-          <div class="fleet-spec">Deployed for project-based repeated movements</div>
-          <div class="fleet-spec">Available in multi-axle configurations</div>
-        </div>
-      </div>
-      <div class="fleet-photo">
-        <img src="1775027057171_image.png" alt="Flatbed truck with heavy steel frame" loading="lazy"/>
-      </div>
-    </div>
-
-    <!-- 5 – Container Truck (illustration) -->
-    <div class="fleet-item">
-      <div class="fleet-info">
-        <div class="fleet-tag">Vehicle Type 05</div>
-        <div class="fleet-name">20 ft &amp; 40 ft Container Trucks</div>
-        <p class="fleet-desc">Standard ISO container trucks used for domestic and import/export cargo movement. Available in 20 ft and 40 ft configurations to accommodate varying volumes. Ideal for FMCG goods, consumer products, and general cargo requiring enclosed transport.</p>
-        <div class="fleet-specs">
-          <div class="fleet-spec">Available in 20 ft and 40 ft sizes</div>
-          <div class="fleet-spec">Suitable for: FMCG, packaged goods, export/import cargo</div>
-          <div class="fleet-spec">Enclosed, weather-protected transport</div>
-        </div>
-      </div>
-      <div class="fleet-photo-placeholder">
-        <svg viewBox="0 0 120 70" width="140" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="12" width="84" height="42" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <rect x="88" y="22" width="26" height="32" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <line x1="88" y1="30" x2="114" y2="30" stroke="#1a2742" stroke-width="1.2" stroke-dasharray="3,2"/>
-          <circle cx="22" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <circle cx="22" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
-          <circle cx="96" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <circle cx="96" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
-          <line x1="4" y1="54" x2="4" y2="58" stroke="#1a2742" stroke-width="2"/>
-          <line x1="88" y1="54" x2="88" y2="58" stroke="#1a2742" stroke-width="2"/>
-        </svg>
-        <p>20 ft / 40 ft Container Truck</p>
-      </div>
-    </div>
-
-    <!-- 6 – Closed Body (illustration) -->
-    <div class="fleet-item reverse">
-      <div class="fleet-info">
-        <div class="fleet-tag">Vehicle Type 06</div>
-        <div class="fleet-name">Closed Body Truck (20 ft / 32 ft)</div>
-        <p class="fleet-desc">Fully enclosed trucks ideal for FMCG, food products, consumer goods and packaged items that require protection from weather and dust. Available in 20 ft and 32 ft body variants to match shipment volumes efficiently and cost-effectively.</p>
-        <div class="fleet-specs">
-          <div class="fleet-spec">Available in 20 ft and 32 ft body sizes</div>
-          <div class="fleet-spec">Suitable for: FMCG, food products, packaged consumer goods</div>
-          <div class="fleet-spec">Fully enclosed, weather-protected body</div>
-        </div>
-      </div>
-      <div class="fleet-photo-placeholder">
-        <svg viewBox="0 0 120 70" width="140" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="10" width="76" height="44" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <rect x="80" y="18" width="34" height="36" rx="2" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <line x1="80" y1="28" x2="114" y2="28" stroke="#1a2742" stroke-width="1.2" stroke-dasharray="3,2"/>
-          <rect x="82" y="20" width="8" height="6" rx="1" fill="#1a2742" opacity="0.15"/>
-          <rect x="93" y="20" width="18" height="6" rx="1" fill="#1a2742" opacity="0.1"/>
-          <circle cx="20" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <circle cx="20" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
-          <circle cx="92" cy="58" r="8" fill="none" stroke="#1a2742" stroke-width="2.5"/>
-          <circle cx="92" cy="58" r="3" fill="#1a2742" opacity="0.3"/>
-        </svg>
-        <p>Closed Body 20 ft / 32 ft Truck</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- GOODS HANDLED -->
-<section id="goods">
-  <div class="sec-label">Capabilities</div>
-  <h2 class="sec-title">Goods We Handle &amp; Vehicles Available</h2>
-  <div class="divider"></div>
-  <div class="goods-two">
-    <div class="goods-col">
-      <div class="goods-col-head">Types of Goods Handled</div>
-      <ul class="goods-list">
-        <li><span>→</span> Industrial machinery and heavy equipment</li>
-        <li><span>→</span> Engineering and project cargo</li>
-        <li><span>→</span> Construction materials (steel, cement, panels)</li>
-        <li><span>→</span> Heavy and oversized equipment (ODC category)</li>
-        <li><span>→</span> Containerised goods — domestic, import &amp; export</li>
-        <li><span>→</span> FMCG and consumer goods (food products, packaged items)</li>
-        <li><span>→</span> Pre-fabricated structures and steel frameworks</li>
-        <li><span>→</span> Industrial drums, reactors, and cylindrical equipment</li>
-      </ul>
-    </div>
-    <div class="goods-col">
-      <div class="goods-col-head">Vehicle Types Available</div>
-      <ul class="goods-list">
-        <li><span>→</span> Flatbed trailers (40 ft)</li>
-        <li><span>→</span> Low-bed and semi low-bed trailers</li>
-        <li><span>→</span> 20 ft &amp; 40 ft container trucks</li>
-        <li><span>→</span> Closed body trucks — 20 ft and 32 ft (for FMCG)</li>
-        <li><span>→</span> Refrigerated vehicles (arranged as per requirement)</li>
-        <li><span>→</span> Light commercial vehicles for local distribution</li>
-        <li><span>→</span> Open trucks as per requirement</li>
-        <li><span>→</span> Multi-axle trailers for heavy project cargo</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
 <!-- WHY US -->
 <section id="why">
@@ -820,44 +677,7 @@
   </div>
 </section>
 
-<!-- COVERAGE -->
-<section id="coverage">
-  <div class="sec-label">Our Reach</div>
-  <h2 class="sec-title">Pan-India Coverage</h2>
-  <div class="divider"></div>
-  <div class="cov-stats">
-    <div class="cov-stat-box">
-      <div class="cov-stat-num">8+</div>
-      <div class="cov-stat-label">Years of Operations</div>
-    </div>
-    <div class="cov-stat-box">
-      <div class="cov-stat-num">100+</div>
-      <div class="cov-stat-label">Vehicles in Network</div>
-    </div>
-    <div class="cov-stat-box">
-      <div class="cov-stat-num">2000+</div>
-      <div class="cov-stat-label">Deliveries Completed</div>
-    </div>
-    <div class="cov-stat-box">
-      <div class="cov-stat-num">100+</div>
-      <div class="cov-stat-label">Cities Served</div>
-    </div>
-  </div>
-  <div class="cov-bottom">
-    <div class="cov-city-head">Key Cities We Serve</div>
-    <div class="city-tags">
-      <span class="city-tag">Chennai</span><span class="city-tag">Bengaluru</span>
-      <span class="city-tag">Hyderabad</span><span class="city-tag">Mumbai</span>
-      <span class="city-tag">Pune</span><span class="city-tag">Delhi NCR</span>
-      <span class="city-tag">Ahmedabad</span><span class="city-tag">Kolkata</span>
-      <span class="city-tag">Coimbatore</span><span class="city-tag">Visakhapatnam</span>
-      <span class="city-tag">Nagpur</span><span class="city-tag">Surat</span>
-      <span class="city-tag">Jaipur</span><span class="city-tag">Kochi</span>
-      <span class="city-tag">Bhubaneswar</span><span class="city-tag">+ Many More</span>
-    </div>
-    <p class="cov-states"><strong>States We Operate In:</strong> Tamil Nadu · Karnataka · Andhra Pradesh · Telangana · Maharashtra · Gujarat · Haryana · Delhi NCR · West Bengal · Rajasthan · Kerala · Madhya Pradesh · Odisha · Punjab · and all major states across India.</p>
-  </div>
-</section>
+
 
 <!-- CONTACT -->
 <section id="contact">
@@ -872,7 +692,7 @@
         </div>
         <div>
           <div class="contact-block-label">Phone</div>
-          <div class="contact-block-val">Contact us to get our number</div>
+          <div class="contact-block-val"><a href="tel:+917904275581">+91 79042 75581</a></div>
         </div>
       </div>
       <div class="contact-block">
@@ -881,7 +701,7 @@
         </div>
         <div>
           <div class="contact-block-label">Email</div>
-          <div class="contact-block-val">Contact us to get our email</div>
+          <div class="contact-block-val"><a href="mailto:dineshcargomovers01@gmail.com">chennai@dineshcargo.in</a></div>
         </div>
       </div>
       <div class="contact-block">
@@ -906,24 +726,46 @@
 
     <div class="contact-form">
       <div class="form-head">Send Us a Message</div>
-      <form id="contactForm">
+
+      <!-- Quick contact buttons -->
+      <div class="form-quick-contact">
+        <a class="fqc-btn" href="tel:+917904275581">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0111.19 18a19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 3.18 2 2 0 014.11 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16z"/></svg>
+          Call: +91 79042 75581
+        </a>
+        <a class="fqc-btn whatsapp" href="https://wa.me/917904275581" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+        <a class="fqc-btn" href="mailto:dineshcargomovers01@gmail.com">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          chennai@dineshcargo.in
+        </a>
+      </div>
+
+      <div class="form-or-divider">Or fill in the form below</div>
+
+      <form id="contactForm" action="https://formsubmit.co/dineshcargomovers01@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Enquiry – Dinesh Cargo Movers"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_next" value=""/>
         <div class="frow">
           <div class="fg">
             <label class="flabel">Full Name</label>
-            <input class="finput" type="text" placeholder="Your full name" required/>
+            <input class="finput" type="text" name="name" placeholder="Your full name" required/>
           </div>
           <div class="fg">
             <label class="flabel">Phone Number</label>
-            <input class="finput" type="tel" placeholder="+91 XXXXX XXXXX"/>
+            <input class="finput" type="tel" name="phone" placeholder="+91 XXXXX XXXXX"/>
           </div>
         </div>
         <div class="fg">
           <label class="flabel">Email Address</label>
-          <input class="finput" type="email" placeholder="your@email.com" required/>
+          <input class="finput" type="email" name="email" placeholder="your@email.com" required/>
         </div>
         <div class="fg">
           <label class="flabel">Service Required</label>
-          <select class="fselect">
+          <select class="fselect" name="service">
             <option value="">Select a service...</option>
             <option>Full Load Transportation (FTL)</option>
             <option>Part Load Transportation (LTL)</option>
@@ -935,9 +777,9 @@
         </div>
         <div class="fg">
           <label class="flabel">Your Requirement</label>
-          <textarea class="ftextarea" placeholder="Describe your shipment — origin, destination, cargo type, approximate weight/dimensions..."></textarea>
+          <textarea class="ftextarea" name="message" placeholder="Describe your shipment — origin, destination, cargo type, approximate weight/dimensions..."></textarea>
         </div>
-        <button type="submit" class="fsubmit">Send Message</button>
+        <button type="submit" class="fsubmit">Send Message →</button>
       </form>
       <div class="form-success" id="formSuccess">
         ✓ Thank you. Your message has been received. We will get back to you shortly.
@@ -958,9 +800,7 @@
       <ul>
         <li><a href="#about">About Us</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#fleet">Fleet &amp; Vehicles</a></li>
         <li><a href="#why">Why Choose Us</a></li>
-        <li><a href="#coverage">Coverage</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -990,11 +830,18 @@
 </footer>
 
 <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  });
+  // The form uses FormSubmit.co for real email delivery.
+  // The JS below is a fallback for local preview only.
+  var form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      // Only intercept if no action set (local preview)
+      if (!this.action || this.action.includes('formsubmit.co')) return;
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  }
 </script>
 </body>
 </html>
